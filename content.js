@@ -37,7 +37,7 @@ function step2() {
         document.querySelector('.radioButton').checked = true
         document.querySelector('.submitButton').click()
     } else {
-        window.location = firstStepUrl
+        window.setTimeout(() => {window.location = firstStepUrl}, 10000)
     }
 }
 
