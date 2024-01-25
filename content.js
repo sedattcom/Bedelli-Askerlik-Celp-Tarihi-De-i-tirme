@@ -1,3 +1,4 @@
+let firstStepUrl = 'https://www.turkiye.gov.tr/mill-savunma-askerligim?hizmet=BedelliCelpVeSevkDonemiDegisiklikBasvuru&basvuru=Bilgileri&stage=basvuruBilgileri'
 let allowedDate = 'ŞUBAT 2024'
 function step1(count = 0) {
     if (count > 3) {
@@ -28,17 +29,19 @@ function step1(count = 0) {
 
     window.setTimeout(() => {
         window.location.reload();
-    }, 1000)
+    }, 10000)
 }
 
 function step2() {
     if (document.querySelectorAll('dl.compact')[1].textContent.indexOf(allowedDate) > 0) {
         document.querySelector('.radioButton').checked = true
         document.querySelector('.submitButton').click()
+    } else {
+        window.location = firstStepUrl
     }
 }
 
-if (window.location.href == 'https://www.turkiye.gov.tr/mill-savunma-askerligim?hizmet=BedelliCelpVeSevkDonemiDegisiklikBasvuru&basvuru=Bilgileri&stage=basvuruBilgileri') {
+if (window.location.href === firstStepUrl) {
     step1()
 } else {
     window.setTimeout(() => step2(), 500)
